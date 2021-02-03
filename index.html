@@ -29,7 +29,7 @@
             </div>
         </form>
         <div class="weather-status text-white text-center">
-            <img src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
+            <img id="weather-icon" src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
             <h1 id="city-name">Dhaka</h1>
             <h3><span id="temperature">38.06</span>&deg;C</h3>
             <h1 id="condition" class="lead">Clouds</h1>
@@ -43,6 +43,9 @@
             fetch(apiLink)
                 .then(response => response.json())
                 .then(data => {
+                    const weatherIcon = data.weather[0].icon
+                    const iconLink = "http://openweathermap.org/img/w/" + weatherIcon + ".png";
+                    document.getElementById("weather-icon").src = iconLink;
                     const cityName = data.name;
                     document.getElementById('city-name').innerText = cityName;
                     const main = data.main;
@@ -50,6 +53,7 @@
                     document.getElementById('temperature').innerText = currentTemp;
                     const currentCondition = data.weather[0].main
                     document.getElementById('condition').innerText = currentCondition;
+
                 })
         }
 
@@ -60,10 +64,19 @@
 
 
         function defaultWeather() {
-            const cityName = "dhaka"
+            const cityName = "sylhet"
             weather(cityName)
         }
         defaultWeather()
+
+
+        const inputValue = document.getElementById("input");
+        inputValue.addEventListener("keydown", function(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                document.getElementById("searchBtn").click();
+            }
+        });
     </script>
 </body>
 
