@@ -19,7 +19,7 @@ function weather(cityName) {
 }
 
 function calledWeather() {
-    const cityName = "'" + document.getElementById('input').value + "'"
+    const cityName = document.getElementById('input').value 
     weather(cityName)
 }
 
