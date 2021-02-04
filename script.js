@@ -1,5 +1,5 @@
 function weather(cityName) {
-    const apiLink = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=92e09db826323a0a16638629b70d9bba";
+    const apiLink = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=92e09db826323a0a16638629b70d9bba";
 
     fetch(apiLink)
         .then(response => response.json())
