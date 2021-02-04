@@ -5,7 +5,7 @@ function weather(cityName) {
         .then(response => response.json())
         .then(data => {
             const weatherIcon = data.weather[0].icon
-            const iconLink = "http://openweathermap.org/img/w/" + weatherIcon + ".png";
+            const iconLink = "https://openweathermap.org/img/w/" + weatherIcon + ".png";
             document.getElementById("weather-icon").src = iconLink;
             const cityName = data.name;
             document.getElementById('city-name').innerText = cityName;
